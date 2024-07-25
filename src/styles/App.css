@@ -1,0 +1,309 @@
+@import '98.css';
+
+/* Общие стили для приложения */
+body {
+  font-family: 'Press Start 2P', cursive, 'MS Sans Serif', sans-serif; /* Пиксельный шрифт + Windows 98 */
+  background-color: #c0c0c0; /* Цвет фона Windows 98 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Основной контейнер приложения */
+.App {
+  max-width: 800px;
+  margin: 20px auto;
+  background: #ffffff; /* Белый фон для приложения */
+  border: 2px solid #000000; /* Черная рамка для приложения */
+  padding: 20px;
+  box-shadow: 2px 2px 4px #000000; /* Тень для придания глубины */
+  font-size: 14px; /* Размер шрифта по умолчанию */
+}
+
+/* Заголовок приложения */
+.header {
+  margin-bottom: 20px;
+  border-bottom: 2px solid #000000; /* Нижняя граница */
+  padding-bottom: 10px;
+  text-align: center; /* Центрирование заголовка */
+}
+
+.header h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000000; /* Черный цвет для заголовка */
+  margin: 0;
+  font-family: 'Press Start 2P', cursive; /* Пиксельный шрифт */
+}
+
+/* Стили для игрового поля */
+.board-row {
+  display: flex;
+}
+
+/* Кнопки игрового поля */
+.square {
+  background: #ffffff;
+  border: 2px solid #000000;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 50px;
+  height: 50px;
+  width: 50px;
+  margin-right: -2px;
+  margin-top: -2px;
+  padding: 0;
+  text-align: center;
+  transition: background-color 0.2s ease, transform 0.2s ease; /* Добавлен эффект перехода для фона и трансформации */
+  font-family: 'Press Start 2P', cursive; /* Пиксельный шрифт */
+}
+
+.square:hover {
+  background-color: #e0e0e0; /* Цвет фона при наведении */
+  transform: scale(1.1); /* Легкое увеличение при наведении */
+}
+
+/* Стили для отображения статуса игры */
+.status {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000000; /* Черный цвет для статуса */
+  border: 1px solid #000000; /* Черная граница */
+  padding: 5px;
+  border-radius: 4px;
+  background: #e0e0e0; /* Легкий серый фон для статуса */
+  font-family: 'Press Start 2P', cursive; /* Пиксельный шрифт */
+  text-align: center; /* Центрирование текста */
+}
+
+/* Информация об игре */
+.info {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.info h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000000; /* Черный цвет для заголовка информации */
+  font-family: 'Press Start 2P', cursive; /* Пиксельный шрифт */
+}
+
+.info p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000000; /* Черный цвет для текста */
+  margin: 10px 0;
+  font-family: 'Press Start 2P', cursive; /* Пиксельный шрифт */
+}
+
+/* Основной контейнер игры */
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+/* Панель с кнопками */
+.game-info {
+  margin-top: 20px;
+  text-align: center; /* Центрирование панели с кнопками */
+}
+
+/* Кнопки действия */
+.button {
+  background: #008cba; /* Цвет кнопки */
+  border: 2px solid #000000; /* Черная рамка кнопки */
+  color: #ffffff; /* Белый текст */
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px; /* Скругленные углы */
+  transition: background 0.3s, border-color 0.3s, transform 0.3s; /* Добавлен эффект перехода для фона, границы и трансформации */
+  font-family: 'Press Start 2P', cursive; /* Пиксельный шрифт */
+}
+
+.button:hover {
+  background: #005f75; /* Цвет фона кнопки при наведении */
+  border-color: #000000; /* Цвет границы кнопки при наведении */
+  transform: scale(1.05); /* Легкое увеличение при наведении */
+}
+
+/* Кнопка информации */
+.info-button {
+  background: none;
+  border: none;
+  color: #000000;
+  font-size: 24px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.info-button:hover {
+  color: #005f75; /* Цвет при наведении */
+}
+
+/* Модальное окно */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный фон */
+  padding-top: 60px;
+}
+
+.modal.show {
+  display: block;
+}
+
+.modal-content {
+  background-color: #ffffff; /* Белый фон модального окна */
+  margin: 5% auto;
+  padding: 20px;
+  border: 2px solid #000000; /* Черная рамка модального окна */
+  width: 80%;
+  max-width: 600px;
+  border-radius: 4px;
+  font-family: 'Press Start 2P', cursive; /* Пиксельный шрифт */
+}
+
+/* Кнопка закрытия модального окна */
+.close {
+  color: #000000;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #ff0000; /* Красный цвет при наведении */
+  text-decoration: none;
+}
+
+/* Иконки футера */
+.icons a {
+  margin: 0 5px;
+  color: #000000; /* Черный цвет для иконок */
+  text-decoration: none;
+  font-size: 24px;
+}
+
+.icons a:hover {
+  color: #005f75; /* Цвет иконок при наведении */
+}
+
+/* Выбор символа */
+.choose-symbol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.choose-symbol h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000000; /* Черный цвет для заголовка */
+  font-family: 'Press Start 2P', cursive; /* Пиксельный шрифт */
+  margin-bottom: 20px;
+}
+
+.choose-symbol .button {
+  margin: 10px 0;
+}
+
+/* Счетчик побед */
+.scoreboard {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000000; /* Черный цвет для счетчика */
+  font-family: 'Press Start 2P', cursive; /* Пиксельный шрифт */
+}
+
+/* Контейнер для выбора символа */
+.choose-symbol {
+  margin: 20px;
+  text-align: center;
+}
+
+/* Основные стили для кнопок */
+.button {
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  margin: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s; /* Добавлен эффект перехода для фона и трансформации */
+}
+
+.button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05); /* Легкое увеличение при наведении */
+}
+
+/* Специфические стили для кнопок выбора символов */
+.symbol-button {
+  font-size: 24px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #28a745;
+}
+
+.symbol-button:hover {
+  background-color: #218838;
+  transform: scale(1.1); /* Легкое увеличение при наведении */
+}
+
+/* Стиль для режима игры */
+.mode-selector {
+  margin: 20px;
+  text-align: center;
+}
+
+.mode-selector label {
+  display: block;
+  margin: 10px 0;
+  font-family: 'Press Start 2P', cursive; /* Пиксельный шрифт */
+}
+
+.mode-selector input[type="radio"] {
+  margin-right: 10px;
+}
+
+/* Стиль для панели состояния и счетчика */
+.game-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.scoreboard {
+  margin-bottom: 10px;
+}
+
+.status {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.game-board {
+  margin: 20px;
+}
